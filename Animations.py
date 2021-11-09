@@ -73,18 +73,18 @@ class OPRGLogo(Scene):
 
 class GraphExample(Scene):
     def construct(self):
-        # num_plane = NumberPlane().set_opacity(0.2)    
-        # self.play(FadeIn(num_plane, rate_func = slow_into))
-        # svg = LogoSVG("OPRG-Logo")
-        # # self.play(DrawBorderThenFill(svg), rate_func = smooth)
-        # self.wait(0.2)
-        # self.play(Write(svg), rate_func = slow_into)
-        # self.wait(0.3)
-        # op_text = TexText("optimalportfolio.github.io")
-        # self.play(Write(op_text.next_to(svg, direction= DOWN, buff = 1)))
-        # self.wait(1)
-        # group = VGroup(num_plane, svg, op_text)
-        # self.play(FadeOut(group))
+        num_plane = NumberPlane().set_opacity(0.2)    
+        self.play(FadeIn(num_plane, rate_func = slow_into))
+        svg = LogoSVG("OPRG-Logo")
+        # self.play(DrawBorderThenFill(svg), rate_func = smooth)
+        self.wait(0.2)
+        self.play(Write(svg), rate_func = slow_into)
+        self.wait(0.3)
+        op_text = TexText("optimalportfolio.github.io")
+        self.play(Write(op_text.next_to(svg, direction= DOWN, buff = 1)))
+        self.wait(1)
+        group = VGroup(num_plane, svg, op_text)
+        self.play(FadeOut(group))
 
         line = Line((-8,1.7,0), (8,1.7,0), color = WHITE)
         self.play(FadeIn(line))
@@ -192,16 +192,16 @@ class GraphExample(Scene):
         yc_20y_coord = yc_axes.c2p(20, yc_20y)
         yc_30y_coord = yc_axes.c2p(30, yc_30y)
 
-        # yc_dot1m.move_to(yc_1m_coord)
-        # yc_dot3m.move_to(yc_3m_coord)
-        # yc_dot6m.move_to(yc_6m_coord)
-        # yc_dot1y.move_to(yc_1y_coord)
-        # yc_dot3y.move_to(yc_3y_coord)
-        # yc_dot5y.move_to(yc_5y_coord)
-        # yc_dot7y.move_to(yc_7y_coord)
-        # yc_dot10y.move_to(yc_10y_coord)
-        # yc_dot20y.move_to(yc_20y_coord)
-        # yc_dot30y.move_to(yc_30y_coord)
+        yc_dot1m.move_to(yc_1m_coord)
+        yc_dot3m.move_to(yc_3m_coord)
+        yc_dot6m.move_to(yc_6m_coord)
+        yc_dot1y.move_to(yc_1y_coord)
+        yc_dot3y.move_to(yc_3y_coord)
+        yc_dot5y.move_to(yc_5y_coord)
+        yc_dot7y.move_to(yc_7y_coord)
+        yc_dot10y.move_to(yc_10y_coord)
+        yc_dot20y.move_to(yc_20y_coord)
+        yc_dot30y.move_to(yc_30y_coord)
 
         yc_line1 = Line(yc_1m_coord, yc_3m_coord, color = GREEN)
         yc_line2 = Line(yc_3m_coord, yc_6m_coord, color = GREEN)
@@ -233,8 +233,8 @@ class GraphExample(Scene):
         vix_group = VGroup(vix_line1, vix_line2, vix_line3, vix_line4)
 
 
-        # current_date = TexText(str(treasury_data['DATE'][0]), color = YELLOW_B).to_edge(DOWN, buff = 0.6).shift(DOWN*0.05 +LEFT*0.15)
-        # self.play(DrawBorderThenFill(current_date, edge = BOTTOM, DIRECTION = DOWN, rate_func = rush_into, run_time = 0.8))
+        current_date = TexText(str(treasury_data['DATE'][0]), color = YELLOW_B).to_edge(DOWN, buff = 0.6).shift(DOWN*0.05 +LEFT*0.15)
+        self.play(DrawBorderThenFill(current_date, edge = BOTTOM, DIRECTION = DOWN, rate_func = rush_into, run_time = 0.8))
         yc_label = TexText("Yield Curve", color = GREY_A, font_size = 40).next_to(yc_axes, direction = UP).shift(RIGHT*0.05 + UP*1.65)
         self.play(Write(yc_label))
         index_label = TexText("Market Indices", color = GREY_A, font_size = 40).next_to(indices_axes, direction = UP).shift(RIGHT*0.05 + UP*1.65)
@@ -279,7 +279,7 @@ class GraphExample(Scene):
         self.play(Write(yc_axes, lag_ratio=0.01, run_time=1))
         self.play(Write(indices_axes, lag_ratio=0.01, run_time=1))
         self.play(Write(vix_axes, lag_ratio=0.01, run_time=1))
-        # self.play(Write(yc_group, run_time = 2, rate_func = slow_into), Write(vix_group, run_time = 2, rate_func = slow_into))
+        self.play(Write(yc_group, run_time = 2, rate_func = slow_into), Write(vix_group, run_time = 2, rate_func = slow_into))
         self.wait(5)
 
         yc_graphs = []
@@ -291,13 +291,13 @@ class GraphExample(Scene):
         for i in range(start_num, len(treasury_data['DGS1MO']), 1):
            
 
-            # if i >1:
-                # self.play(FadeOut(current_date), FadeOut(yc_group),FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_sm_val), FadeOut(vix_fm_label), FadeOut(vix_fm_val), FadeOut(difference), FadeOut(difference_val), FadeToColor(yc_label, GREY_A)) 
-                # self.play(FadeOut(current_date), FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_sm_val), FadeOut(vix_fm_label), FadeOut(vix_fm_val), FadeOut(difference), FadeOut(difference_val), FadeToColor(yc_label, GREY_A))       
-                # self.play(FadeToColor(vix_label, GREY_A))
-            # else:
-                # self.play(FadeOut(current_date), FadeOut(yc_group),FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_fm_label), FadeOut(difference), FadeToColor(yc_label, GREY_A))    
-                # self.play(FadeOut(current_date), FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_fm_label), FadeOut(difference), FadeToColor(yc_label, GREY_A))    
+            if i >1:
+                self.play(FadeOut(current_date), FadeOut(yc_group),FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_sm_val), FadeOut(vix_fm_label), FadeOut(vix_fm_val), FadeOut(difference), FadeOut(difference_val), FadeToColor(yc_label, GREY_A)) 
+                self.play(FadeOut(current_date), FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_sm_val), FadeOut(vix_fm_label), FadeOut(vix_fm_val), FadeOut(difference), FadeOut(difference_val), FadeToColor(yc_label, GREY_A))       
+                self.play(FadeToColor(vix_label, GREY_A))
+            else:
+                self.play(FadeOut(current_date), FadeOut(yc_group),FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_fm_label), FadeOut(difference), FadeToColor(yc_label, GREY_A))    
+                self.play(FadeOut(current_date), FadeOut(yc_s_label), FadeOut(vix_group), FadeOut(yc_spread), FadeOut(vix_sm_label), FadeOut(vix_fm_label), FadeOut(difference), FadeToColor(yc_label, GREY_A))    
             
             
             yc_1m = pd.to_numeric(treasury_data['DGS1MO'][i])
@@ -342,16 +342,16 @@ class GraphExample(Scene):
             elif yc_1m > 0.2:
                     yc_color = ORANGE
 
-            # yc_dot1m = Dot(color=yc_color).scale(0.8)
-            # yc_dot3m = Dot(color=yc_color).scale(0.8)
-            # yc_dot6m = Dot(color=yc_color).scale(0.8)
-            # yc_dot1y = Dot(color=yc_color).scale(0.8)
-            # yc_dot3y = Dot(color=yc_color).scale(0.8)
-            # yc_dot5y = Dot(color=yc_color).scale(0.8)
-            # yc_dot7y = Dot(color=yc_color).scale(0.8)
-            # yc_dot10y = Dot(color=yc_color).scale(0.8)
-            # yc_dot20y = Dot(color=yc_color).scale(0.8)
-            # yc_dot30y = Dot(color=yc_color).scale(0.8)
+            yc_dot1m = Dot(color=yc_color).scale(0.8)
+            yc_dot3m = Dot(color=yc_color).scale(0.8)
+            yc_dot6m = Dot(color=yc_color).scale(0.8)
+            yc_dot1y = Dot(color=yc_color).scale(0.8)
+            yc_dot3y = Dot(color=yc_color).scale(0.8)
+            yc_dot5y = Dot(color=yc_color).scale(0.8)
+            yc_dot7y = Dot(color=yc_color).scale(0.8)
+            yc_dot10y = Dot(color=yc_color).scale(0.8)
+            yc_dot20y = Dot(color=yc_color).scale(0.8)
+            yc_dot30y = Dot(color=yc_color).scale(0.8)
 
             yc_line1 = Line(yc_1m_coord, yc_3m_coord, color = yc_color)
             yc_line2 = Line(yc_3m_coord, yc_6m_coord, color = yc_color)
@@ -363,8 +363,9 @@ class GraphExample(Scene):
             yc_line8 = Line(yc_10y_coord, yc_20y_coord, color = yc_color)
             yc_line9 = Line(yc_20y_coord, yc_30y_coord, color = yc_color)
 
-            # yc_spread = TexText("10Y - 3M Bond Spread", color = yc_color, font_size = 30).next_to(yc_axes, direction = UP).shift(RIGHT*0 + UP*0.7)
-            # yc_s_label = TexText(str(round(yc_10y - yc_3m, 2)), color = yc_color, font_size = 25).next_to(yc_axes, direction = UP).shift(RIGHT*0 + UP*0.3)
+            yc_spread = TexText("10Y - 3M Bond Spread", color = yc_color, font_size = 30).next_to(yc_axes, direction = UP).shift(RIGHT*0 + UP*0.7)
+            yc_s_label = TexText(str(round(yc_10y - yc_3m, 2)), color = yc_color, font_size = 25).next_to(yc_axes, direction = UP).shift(RIGHT*0 + UP*0.3)
+            
             try:
                 vix_spot = vix_ts['Spot'][i]
                 vix_1m = vix_ts['1M'][i]
@@ -397,12 +398,12 @@ class GraphExample(Scene):
             vix_line3 = Line(vix_2m_coord, vix_3m_coord, color = vix_color)
             vix_line4 = Line(vix_3m_coord, vix_4m_coord, color = vix_color)
 
-            # vix_fm_label = TexText("VIX 2M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(LEFT*1.5 + UP*0.73)
-            # vix_fm_val = TexText(str(round(vix_2m,2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(LEFT*1.5 + UP*0.35)
-            # vix_sm_label = TexText("VIX 1M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(RIGHT*0 + UP*0.73)
-            # vix_sm_val = TexText(str(round(vix_1m, 2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(LEFT*0 + UP*0.35)
-            # difference = TexText("2M - 1M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(RIGHT*1.5 + UP*0.73)
-            # difference_val = TexText(str(round(vix_2m - vix_1m, 2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(RIGHT*1.5 + UP*0.35) 
+            vix_fm_label = TexText("VIX 2M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(LEFT*1.5 + UP*0.73)
+            vix_fm_val = TexText(str(round(vix_2m,2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(LEFT*1.5 + UP*0.35)
+            vix_sm_label = TexText("VIX 1M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(RIGHT*0 + UP*0.73)
+            vix_sm_val = TexText(str(round(vix_1m, 2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(LEFT*0 + UP*0.35)
+            difference = TexText("2M - 1M", color = vix_color, font_size = 30).next_to(vix_axes, direction = UP).shift(RIGHT*1.5 + UP*0.73)
+            difference_val = TexText(str(round(vix_2m - vix_1m, 2)), color = vix_color, font_size = 25).next_to(vix_axes, direction = UP).shift(RIGHT*1.5 + UP*0.35) 
            
             yc_group = VGroup(yc_line1, yc_line2, yc_line3, yc_line4, yc_line5, yc_line6, yc_line7, yc_line8, yc_line9)
 
@@ -411,16 +412,16 @@ class GraphExample(Scene):
             vix_group = VGroup(vix_line1, vix_line2, vix_line3, vix_line4)
 
             vix_graphs.append(vix_group)
-            # vix_labels = VGroup(vix_fm_label, vix_fm_val, vix_sm_label, vix_sm_val, difference, difference_val)
+            vix_labels = VGroup(vix_fm_label, vix_fm_val, vix_sm_label, vix_sm_val, difference, difference_val)
 
             current_date = TexText(str(treasury_data['DATE'][i]), color = YELLOW_B).to_edge(DOWN, buff = 0.6).shift(DOWN*0.05+LEFT*0.15)
             dates.append(current_date)
-            # self.play(FadeToColor(vix_label, vix_color))
-            # self.play(FadeToColor(yc_label, yc_color))
+            self.play(FadeToColor(vix_label, vix_color))
+            self.play(FadeToColor(yc_label, yc_color))
 
-            # self.play(DrawBorderThenFill(current_date, rate_func = rush_into, run_time = 0.8))
-            # self.wait(0.5)
-            # self.play(Write(yc_group, run_time = 1.5, rate_func = rush_into), Write(vix_group, run_time = 1.5, rate_func = rush_into))
+            self.play(DrawBorderThenFill(current_date, rate_func = rush_into, run_time = 0.8))
+            self.wait(0.5)
+            self.play(Write(yc_group, run_time = 1.5, rate_func = rush_into), Write(vix_group, run_time = 1.5, rate_func = rush_into))
             
             if i == start_num:
                 self.play(Write(yc_graphs[0]), Write(vix_graphs[0]))
@@ -430,70 +431,65 @@ class GraphExample(Scene):
                 dates.pop(0)
                 yc_graphs.pop(0)
                 vix_graphs.pop(0)
-            # self.play(Write(vix_group, run_time = 1.5, rate_func = rush_into))
-            # self.play(FadeIn(vix_labels), FadeIn(yc_s_label), FadeIn(yc_spread))
-            # self.wait(2.5)
+            self.play(Write(vix_group, run_time = 1.5, rate_func = rush_into))
+            self.play(FadeIn(vix_labels), FadeIn(yc_s_label), FadeIn(yc_spread))
+            self.wait(2.5)
 
          
 
 
-            # if i == 0:
-            #     self.play(Write(TexText(current_date.to_edge(UP))))
+            if i == 0:
+                self.play(Write(TexText(current_date.to_edge(UP))))
                
-            # if i > 1:
-            #     self.play(FadeOut(TexText(current_date)))
-            # current_date = treasury_data['DATE'][i] 
-            # if i > 1:
-            #     self.play(Write(TexText(current_date.to_edge(UP))))
+            if i > 1:
+                self.play(FadeOut(TexText(current_date)))
+            current_date = treasury_data['DATE'][i] 
+            if i > 1:
+                self.play(Write(TexText(current_date.to_edge(UP))))
 
-            # class Test(GraphScene):
-            #     CONFIG = {
-            # "x_min": -10,
-            # "x_max": 10,
-            # "x_axis_width": FRAME_WIDTH,
-            # "x_tick_frequency": 1,
-            # "y_min": -6,
-            # "y_max": 6,
-            # "y_axis_height": FRAME_HEIGHT,
-            # "y_tick_frequency": 1,
-            # "y_axis_label": "$y$",
-            # "graph_origin": ORIGIN,
-            # }
-            # def construct(self):
-            #     self.setup_axes()
+            class Test(GraphScene):
+                CONFIG = {
+            "x_min": -10,
+            "x_max": 10,
+            "x_axis_width": FRAME_WIDTH,
+            "x_tick_frequency": 1,
+            "y_min": -6,
+            "y_max": 6,
+            "y_axis_height": FRAME_HEIGHT,
+            "y_tick_frequency": 1,
+            "y_axis_label": "$y$",
+            "graph_origin": ORIGIN,
+            }
+            def construct(self):
+                self.setup_axes()
 
-            #     p   = ValueTracker(-10)
+                p   = ValueTracker(-10)
 
-            #     y = self.get_graph(
-            #     lambda x: -1 * p.get_value() * x + p.get_value(),
-            #     color = BLUE,
-            #     x_min = -10,
-            #     x_max = 10
-            #                 )
+                y = self.get_graph(
+                lambda x: -1 * p.get_value() * x + p.get_value(),
+                color = BLUE,
+                x_min = -10,
+                x_max = 10
+                            )
 
-            #     y.add_updater(
-            #         lambda m: m.become(
-            #         self.get_graph(
-            #         lambda x: -1 * p.get_value() * x + p.get_value(),
-            #         color = BLUE,
-            #         x_min = -10,
-            #         x_max = 10
-            #                      )
-            #                     )
-            #                 )
+                y.add_updater(
+                    lambda m: m.become(
+                    self.get_graph(
+                    lambda x: -1 * p.get_value() * x + p.get_value(),
+                    color = BLUE,
+                    x_min = -10,
+                    x_max = 10
+                                 )
+                                )
+                            )
 
-            #         self.add(y)
-            #         self.wait()
-            #         self.play(
-            #         ApplyMethod(p.increment_value,20),
-            #         run_time=5,
-            #             )
-            #         self.wait()
-
-
-
-# Example Usage:
-# lin_equ((-40, 30,), (20, 45))
+                    self.add(y)
+                    self.wait()
+                    self.play(
+                    ApplyMethod(p.increment_value,20),
+                    run_time=5,
+                        )
+                    self.wait()
 
 
     
