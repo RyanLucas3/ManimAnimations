@@ -10,6 +10,6 @@
 [![Manim Discord](https://img.shields.io/discord/581738731934056449.svg?label=discord&logo=discord)](https://discord.gg/mMRrZQW)
 [![docs](https://github.com/3b1b/manim/workflows/docs/badge.svg)](https://3b1b.github.io/manim/)
 
-Manim is an engine for precise programatic animations, designed for creating explanatory math videos.
+Manim is an engine for precise programatic animations, designed for creating explanatory math videos. It was originally created by the YouTuber [3Blue1Brown](https://www.youtube.com/c/3blue1brown).
 
 I have created various videos and illustrations using the software, including one video of a graphical derivation of the Yield Curve from economics, which I posted on Reddit: https://www.reddit.com/r/3Blue1Brown/comments/n5cn0j/yo_i_made_a_quick_video_in_manim_showing_a/gx4ifp7/?context=3.
