@@ -15,8 +15,6 @@ def import_vix_term_structure(file_path):
     if file_path == "Ryan":
         ryan = "/Users/ryanlucas/Desktop/"
         path = str(ryan + common_path)
-    if file_path != "Ryan" and file_path != "Raena":
-        path = file_path
     term_structure = pd.read_csv(path)
     term_structure['Trade Date'] = pd.to_datetime(term_structure['Trade Date'])
     term_structure = term_structure.set_index('Trade Date')
