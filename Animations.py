@@ -10,11 +10,8 @@ treasury_data = pd.read_csv (r'/users/ryanlucas/Desktop/OPRG1/DataCentre/Source_
 ##############################
 ##############################
 
-def import_vix_term_structure(file_path = "Raena"):
-    common_path = "OPCRG1/EasterProject/EasterProjecct/DataGathering(2.2)/VIX Term Structure.csv"
-    if file_path == "Raena":
-        raena = "C:/Users/raena/Documents/GITHUB/"
-        path = str(raena + common_path)
+def import_vix_term_structure(file_path):
+
     if file_path == "Ryan":
         ryan = "/Users/ryanlucas/Desktop/"
         path = str(ryan + common_path)
