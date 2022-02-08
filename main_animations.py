@@ -40,26 +40,26 @@ class SandD(Scene):
         
     }
     def construct(self):
-        # yc_axes = Axes((0, 11), (0, 12), height = 6.3)
-        # yc_label = yc_axes.get_y_axis_label(r"Yield_{b}", edge= TOP, direction= UP, buff = 2).scale(0.6)
-        # xc_label = yc_axes.get_x_axis_label(r"Maturity", edge = RIGHT_SIDE, direction= BOTTOM, buff = 0.5).scale(0.6)
-        # yc_axes.add_coordinate_labels()
-        # yc_axes.add(yc_label)
-        # yc_axes.add(xc_label)
-        # self.add(yc_axes)
-        # yield_curve = yc_axes.get_graph(
-        #     lambda x: 5.8 + 3*np.log(x) + 0.1*x*np.log(x) - 0.7*x if x > 0.2 else 0, use_smoothing = False, color = GREEN)
-        # self.add(yield_curve)
-        # yc_text = TexText(r"Yield Curve", font_size = 60, color = GREEN).next_to(yield_curve, UP, buff= 0.6)
-        # self.add(yc_text)
+        yc_axes = Axes((0, 11), (0, 12), height = 6.3)
+        yc_label = yc_axes.get_y_axis_label(r"Yield_{b}", edge= TOP, direction= UP, buff = 2).scale(0.6)
+        xc_label = yc_axes.get_x_axis_label(r"Maturity", edge = RIGHT_SIDE, direction= BOTTOM, buff = 0.5).scale(0.6)
+        yc_axes.add_coordinate_labels()
+        yc_axes.add(yc_label)
+        yc_axes.add(xc_label)
+        self.add(yc_axes)
+        yield_curve = yc_axes.get_graph(
+            lambda x: 5.8 + 3*np.log(x) + 0.1*x*np.log(x) - 0.7*x if x > 0.2 else 0, use_smoothing = False, color = GREEN)
+        self.add(yield_curve)
+        yc_text = TexText(r"Yield Curve", font_size = 60, color = GREEN).next_to(yield_curve, UP, buff= 0.6)
+        self.add(yc_text)
 
-        # self.wait(5)
-        # inv_yield_curve = yc_axes.get_graph(
-        #     lambda x: 8 - np.log(x) if x > 0.25 else 11 - x, use_smoothing = False, color = RED)
-        # self.wait(1)
-        # yc_red = TexText(r"Inverted Yield Curve", font_size = 60, color = RED).next_to(yield_curve, UP, buff= 0.6)
-        # self.play(Transform(group, inv_yield_curve), Transform(yc_text, yc_red))
-        # self.wait(1)
+        self.wait(5)
+        inv_yield_curve = yc_axes.get_graph(
+            lambda x: 8 - np.log(x) if x > 0.25 else 11 - x, use_smoothing = False, color = RED)
+        self.wait(1)
+        yc_red = TexText(r"Inverted Yield Curve", font_size = 60, color = RED).next_to(yield_curve, UP, buff= 0.6)
+        self.play(Transform(group, inv_yield_curve), Transform(yc_text, yc_red))
+        self.wait(1)
 
         axes = Axes((0, 9), (0, 12), width = 5.5, height = 5.5)
         # y_label = axes.get_y_axis_label("Annual \  Return", edge= TOP, direction= LEFT_SIDE)
@@ -101,17 +101,17 @@ class SandD(Scene):
             ShowCreation(demand),
             FadeIn(demand_label, RIGHT))
 
-        # D2_label = axes.get_graph_label(demand, r"D_b")
-        # S2_label = axes.get_graph_label(supply, r"S_b")
-        # Q2_label = axes.get_x_axis_label("Q_b", edge= RIGHT_SIDE, direction= BOTTOM)
-        # self.play(Transform(x_label, Q2_label))
-        # self.play(Transform(demand_label, D2_label))
-        # self.play(Transform(supply_label, S2_label))
+        D2_label = axes.get_graph_label(demand, r"D_b")
+        S2_label = axes.get_graph_label(supply, r"S_b")
+        Q2_label = axes.get_x_axis_label("Q_b", edge= RIGHT_SIDE, direction= BOTTOM)
+        self.play(Transform(x_label, Q2_label))
+        self.play(Transform(demand_label, D2_label))
+        self.play(Transform(supply_label, S2_label))
 
         self.wait(2)
 
-        # Y4_label = axes.get_y_axis_label("Yield_b", edge= TOP, direction= LEFT_SIDE)
-        # self.play(Transform(y_label, Y4_label))
+        Y4_label = axes.get_y_axis_label("Yield_b", edge= TOP, direction= LEFT_SIDE)
+        self.play(Transform(y_label, Y4_label))
 
 
         line = DashedVMobject(Line((-2.65,0.07,0), (-0.2,0.07,0), color = GREEN))
@@ -128,9 +128,9 @@ class SandD(Scene):
         self.wait(4)
 
 
-# class MultSandD(Scene):
+class MultSandD(Scene):
    
-#     def construct(self):
+    def construct(self):
 
 
         mult_axes = Axes((0, 9), (0, 10), width = 3.2, height =  2.5)
@@ -176,22 +176,22 @@ class SandD(Scene):
         self.wait(1.5)
         self.play(ShowCreation(graphs[0]), ShowCreation(graphs[1]), ShowCreation(graphs[2]), ShowCreation(graphs[3]), FadeOut(mult_bonds))
        
-        # axes2 = Axes((0, 9), (0, 12), width = 3, height = 2.5)
-        # axes2.shift(3*LEFT + 1.5 * UP)
-        # y2_label = axes2.get_y_axis_label("Annual \  Return", edge= TOP, direction= LEFT_SIDE)
-        # x2_label = axes2.get_x_axis_label("Quantity", edge = RIGHT_SIDE, direction= BOTTOM)
-        # axes2.add(y2_label.shift(0.6*LEFT + 0 * UP).scale(0.4))
-        # axes2.add(x2_label.shift(0*LEFT + 0.5 * UP).scale(0.4))
-        # axes2.add_coordinate_labels()
+        axes2 = Axes((0, 9), (0, 12), width = 3, height = 2.5)
+        axes2.shift(3*LEFT + 1.5 * UP)
+        y2_label = axes2.get_y_axis_label("Annual \  Return", edge= TOP, direction= LEFT_SIDE)
+        x2_label = axes2.get_x_axis_label("Quantity", edge = RIGHT_SIDE, direction= BOTTOM)
+        axes2.add(y2_label.shift(0.6*LEFT + 0 * UP).scale(0.4))
+        axes2.add(x2_label.shift(0*LEFT + 0.5 * UP).scale(0.4))
+        axes2.add_coordinate_labels()
         supply1 = mult_axes2.get_graph(
             lambda x: 6.2-x,
             use_smoothing=False,
             color=BLUE)
 
-        # supply = always_redraw(lambda: axes.get_v_line(dot.get_bottom()))
-        # By default, it draws it so as to somewhat smoothly interpolate
-        # between sampled points (x, f(x)).  If the graph is meant to have
-        # a corner, though, you can set use_smoothing to False
+        supply = always_redraw(lambda: axes.get_v_line(dot.get_bottom()))
+#         By default, it draws it so as to somewhat smoothly interpolate
+#         between sampled points (x, f(x)).  If the graph is meant to have
+#         a corner, though, you can set use_smoothing to False
         demand1 = mult_axes2.get_graph(
             lambda x: 1+0.13*x,
             use_smoothing=False,
@@ -353,10 +353,11 @@ class SandD(Scene):
         yc_text = TexText(r"Yield Curve", font_size = 60, color = GREEN).next_to(yield_curve, UP, buff= 0.6)
         self.play(FadeIn(yc_text))
         self.play(WiggleOutThenIn(yc_text))
-        # self.play(Indicate(yield_curve))
-        # self.play(FadeOut(yc_text), FadeOut(yield_curve))
-# class YC(MultSandD):
-#     def construct(self):
+        self.play(Indicate(yield_curve))
+        self.play(FadeOut(yc_text), FadeOut(yield_curve))
+        
+class YC(MultSandD):
+    def construct(self):
         yc_axes = Axes((0, 11), (0, 12), height = 6.3)
         yc_label = yc_axes.get_y_axis_label(r"Yield_{b}", edge= TOP, direction= UP, buff = 2).scale(0.6)
         xc_label = yc_axes.get_x_axis_label(r"Maturity", edge = RIGHT_SIDE, direction= BOTTOM, buff = 0.5).scale(0.6)
@@ -364,11 +365,11 @@ class SandD(Scene):
         yc_axes.add(yc_label)
         yc_axes.add(xc_label)
         self.add(yc_axes)
-        # yield_curve = yc_axes.get_graph(
-        #     lambda x: 5.8 + 3*np.log(x) + 0.1*x*np.log(x) - 0.7*x if x > 0.2 else 0, use_smoothing = False, color = GREEN)
-        # self.add(yield_curve)
-        # yc_text = TexText(r"Yield Curve", font_size = 60, color = GREEN).next_to(yield_curve, UP, buff= 0.6)
-        # self.add(yc_text)
+        yield_curve = yc_axes.get_graph(
+            lambda x: 5.8 + 3*np.log(x) + 0.1*x*np.log(x) - 0.7*x if x > 0.2 else 0, use_smoothing = False, color = GREEN)
+        self.add(yield_curve)
+        yc_text = TexText(r"Yield Curve", font_size = 60, color = GREEN).next_to(yield_curve, UP, buff= 0.6)
+        self.add(yc_text)
 
         inv_yield_curve = yc_axes.get_graph(
             lambda x: 8 - np.log(x) if x > 0.25 else 11 - x, use_smoothing = False, color = RED)
@@ -376,8 +377,6 @@ class SandD(Scene):
         yc_red = TexText(r"Inverted Yield Curve", font_size = 60, color = RED).next_to(yield_curve, UP, buff= 0.6)
         self.play(Transform(yield_curve, inv_yield_curve), Transform(yc_text, yc_red))
         self.wait(1)
-
-
 
         less_inv = yc_axes.get_graph(
             lambda x: 7.5 - np.log(x) + 0.2* x if x > 0.25 else 7.5 - x, use_smoothing = False, color = ORANGE)
